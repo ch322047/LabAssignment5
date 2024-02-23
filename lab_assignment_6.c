@@ -1,9 +1,27 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+//Christian Estrada - COP3502C - Lab 6 Assignment
 
 int search(int numbers[], int low, int high, int value) 
-{
-	return -1;
-}
+{//binary search, not linear search
+
+	//base case
+	if(low == high){
+		return -1;
+	}
+
+	int mid = ((high+low)/2);
+	if (numbers[mid] == value){
+		return mid;
+	}
+
+	if(numbers[mid] > value){
+		return search(numbers, low, mid, value);//searches left half of the array
+	}
+
+	return search(numbers, mid+1, high, value);//searches right half of the array
+	}	
 
 void printArray(int numbers[], int sz)
 {
